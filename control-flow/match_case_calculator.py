@@ -1,21 +1,24 @@
 # match_case_calculator.py
 
+# Prompt for user input
 num1 = float(input("Enter the first number: "))
 num2 = float(input("Enter the second number: "))
 operation = input("Choose the operation (+, -, *, /): ")
 
-if operation == "+":
-    print("Result:", num1 + num2)
-elif operation == "-":
-    print("Result:", num1 - num2)
-elif operation == "*":
-    print("Result:", num1 * num2)
-elif operation == "/":
-    if num2 != 0:
-        print("Result:", num1 / num2)
-    else:
-        print("Error: Division by zero is not allowed.")
-else:
-    print("Result: Invalid operation")
+# Use match-case (Python 3.10+)
+match operation:
+    case "+":
+        print("Result:", num1 + num2)
+    case "-":
+        print("Result:", num1 - num2)
+    case "*":
+        print("Result:", num1 * num2)
+    case "/":
+        if num2 != 0:
+            print("Result:", num1 / num2)
+        else:
+            print("Error: Division by zero is not allowed.")
+    case _:
+        print("Result: Invalid operation")
 
 
