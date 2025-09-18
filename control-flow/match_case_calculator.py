@@ -1,36 +1,24 @@
-# match_case_calculator.py
-# Simple calculator that uses a Python 3.10+ match / case statement.
+# match_case_calculator.py (compatible version)
 
-def get_number(prompt):
-    """Prompt repeatedly until the user enters a valid number."""
-    while True:
-        try:
-            return float(input(prompt))
-        except ValueError:
-            print("Please enter a valid number (e.g. 3.5 or 10).")
+num1 = float(input("Enter the first number: "))
+num2 = float(input("Enter the second number: "))
 
-# 1) Read user input (num1, num2, operation)
-num1 = get_number("Enter the first number: ")
-num2 = get_number("Enter the second number: ")
-operation = input("Choose the operation (+, -, *, /): ").strip()
+print("Choose an operation: add, subtract, multiply, divide")
+operation = input("Enter operation: ")
 
-# 2) Use match / case to perform the chosen operation
-match operation:
-    case "+":
-        result = num1 + num2
-        print(f"The result is {result}")
-    case "-":
-        result = num1 - num2
-        print(f"The result is {result}")
-    case "*":
-        result = num1 * num2
-        print(f"The result is {result}")
-    case "/":
-        if num2 == 0:
-            print("Error: Division by zero is not allowed.")
-        else:
-            result = num1 / num2
-            print(f"The result is {result}")
-    case _:
-        print("Unknown operation. Please choose one of +, -, *, /.")
+if operation == "add":
+    result = num1 + num2
+elif operation == "subtract":
+    result = num1 - num2
+elif operation == "multiply":
+    result = num1 * num2
+elif operation == "divide":
+    if num2 != 0:
+        result = num1 / num2
+    else:
+        result = "Error: Cannot divide by zero"
+else:
+    result = "Invalid operation"
+
+print("Result:", result)
 
