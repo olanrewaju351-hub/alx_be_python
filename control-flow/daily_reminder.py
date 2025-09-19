@@ -1,13 +1,18 @@
 # daily_reminder.py
 
-priority = input("Enter the priority (high, medium, low): ")
+# Prompt user for task details
+task = input("Enter your task: ")
+time_bound = input("Is it time-bound? (yes/no): ")
+priority = input("Priority (high/medium/low): ")
 
-if priority == "high":
-    print("This is a high priority task! Handle it immediately.")
-elif priority == "medium":
-    print("This is a medium priority task. Plan to do it soon.")
-elif priority == "low":
-    print("This is a low priority task. You can do it later.")
-else:
-    print("Invalid priority entered.")
+# Use match-case (Python 3.10+) for priority handling
+match priority:
+    case "high":
+        print(f"The result is: '{task}' is a HIGH priority task! Handle it immediately.")
+    case "medium":
+        print(f"The result is: '{task}' is a MEDIUM priority task. Plan to do it soon.")
+    case "low":
+        print(f"The result is: '{task}' is a LOW priority task. You can do it later.")
+    case _:
+        print("Invalid priority entered.")
 
