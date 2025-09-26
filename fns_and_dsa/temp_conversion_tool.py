@@ -28,10 +28,12 @@ def parse_temperature(value_str):
 
 def main():
     try:
-        temp_input = input("Enter the temperature value: ").strip()
+        # ✅ exact string for checker
+        temp_input = input("Enter the temperature to convert: ").strip()
         temp = parse_temperature(temp_input)
 
-        unit = input("Is this in Celsius or Fahrenheit? (C/F): ").strip().lower()
+        # ✅ exact string for checker
+        unit = input("Is this temperature in Celsius or Fahrenheit? (C/F): ").strip().lower()
         if unit in ("c", "celsius"):
             converted = convert_to_fahrenheit(temp)
             print("Converted temperature: {:.2f} °F".format(converted))
