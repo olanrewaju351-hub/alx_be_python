@@ -16,14 +16,13 @@ def calculate_future_date():
     Part 2: prompt user for a number of days, compute the future date,
     save it in 'future_date' and print as "YYYY-MM-DD".
     """
-    # keep prompting until we get a valid integer
-    while True:
-        days_str = input("Enter number of days from today (integer): ").strip()
-        try:
-            days = int(days_str)
-            break
-        except ValueError:
-            print("Please enter a valid integer for the number of days.")
+    # prompt exactly as required
+    days_str = input("Enter the number of days to add to the current date: ").strip()
+    try:
+        days = int(days_str)
+    except ValueError:
+        print("Invalid input. Please enter an integer.")
+        return None
 
     # Use current date/time as base
     current_date = datetime.now()
