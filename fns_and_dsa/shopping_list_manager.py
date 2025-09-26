@@ -14,21 +14,26 @@ def main():
         choice = input("Enter your choice: ").strip()
 
         if choice == '1':
-            item = input("Enter item to add: ").strip()
+            item = input("Enter the item to add: ").strip()
             if item:
                 shopping_list.append(item)
-                print(f"Added: {item}")
+                print(f"'{item}' has been added to the list.")
             else:
                 print("No item entered. Nothing added.")
         elif choice == '2':
             if not shopping_list:
                 print("Shopping list is empty. Nothing to remove.")
                 continue
-            item = input("Enter item to remove: ").strip()
-            if item in shopping_list:
-                shopping_list.remove(item)
-                print(f"Removed: {item}")
-            else:
+            item = input("Enter the item to remove: ").strip()
+            # remove first case-insensitive match while preserving original casing
+            found = False
+            for i, existing in enumerate(shopping_list):
+                if existing.lower() == item.lower():
+                    removed = shopping_list.pop(i)
+                    print(f"'{removed}' has been removed from the list.")
+                    found = True
+                    break
+            if not found:
                 print(f"Item not found in the shopping list: {item}")
         elif choice == '3':
             if not shopping_list:
@@ -45,4 +50,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
