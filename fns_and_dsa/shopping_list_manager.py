@@ -1,7 +1,7 @@
 # shopping_list_manager.py
 
 def display_menu():
-    print("\nShopping List Manager")
+    print("Shopping List Manager")
     print("1. Add Item")
     print("2. Remove Item")
     print("3. View List")
@@ -25,21 +25,16 @@ def main():
                 print("Shopping list is empty. Nothing to remove.")
                 continue
             item = input("Enter item to remove: ").strip()
-            # remove first case-insensitive match while preserving original casing
-            found = False
-            for i, existing in enumerate(shopping_list):
-                if existing.lower() == item.lower():
-                    removed = shopping_list.pop(i)
-                    print(f"Removed: {removed}")
-                    found = True
-                    break
-            if not found:
+            if item in shopping_list:
+                shopping_list.remove(item)
+                print(f"Removed: {item}")
+            else:
                 print(f"Item not found in the shopping list: {item}")
         elif choice == '3':
             if not shopping_list:
                 print("Shopping list is empty.")
             else:
-                print("\nCurrent shopping list:")
+                print("Current shopping list:")
                 for idx, it in enumerate(shopping_list, start=1):
                     print(f"{idx}. {it}")
         elif choice == '4':
