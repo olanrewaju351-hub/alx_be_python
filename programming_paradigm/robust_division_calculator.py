@@ -1,23 +1,21 @@
 # robust_division_calculator.py
 
-def safe_divide(numerator, denominator):
-    """
-    Safely divide numerator by denominator.
-    - Accepts numbers or numeric strings.
-    - Returns a float result on success.
-    - Returns a string error message on failure.
-    """
-    # Try converting inputs to floats (handle non-numeric input)
+def robust_division_calculator():
+    """A simple calculator that divides two numbers with error handling."""
     try:
-        num = float(numerator)
-        den = float(denominator)
-    except (TypeError, ValueError):
-        return "Error: Non-numeric input. Please enter valid numbers."
+        num1 = float(input("Enter the numerator: "))
+        num2 = float(input("Enter the denominator: "))
 
-    # Try performing the division (handle division by zero)
-    try:
-        result = num / den
+        result = num1 / num2
+        print(f"The result is {result}")
+
     except ZeroDivisionError:
-        return "Error: Division by zero is not allowed."
+        # EXACT string required
+        print("Error: Cannot divide by zero.")
+    except ValueError:
+        print("Error: Please enter valid numbers.")
 
-    return result
+
+if __name__ == "__main__":
+    robust_division_calculator()
+
