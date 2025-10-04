@@ -10,10 +10,11 @@ def safe_divide(numerator, denominator):
 
         # Perform division
         result = num / den
-        return f"Result: {result}"
+        return f"The result of the division is {result}"
 
     except ValueError:
         # Handle non-numeric input
         return "Error: Please enter numeric values only."
+
 
 
