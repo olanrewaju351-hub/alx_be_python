@@ -7,27 +7,27 @@ class Book:
         self.author = author
 
     def __str__(self):
-        return f"{self.title} by {self.author}"
+        return "{} by {}".format(self.title, self.author)
 
 
 # Derived Class - EBook
 class EBook(Book):
     def __init__(self, title, author, file_size):
         super().__init__(title, author)
-        self.file_size = file_size
+        self.file_size = int(file_size)
 
     def __str__(self):
-        return f"{self.title} by {self.author} - File size: {self.file_size}KB"
+        return "{} by {}, File Size: {}KB".format(self.title, self.author, self.file_size)
 
 
 # Derived Class - PrintBook
 class PrintBook(Book):
     def __init__(self, title, author, page_count):
         super().__init__(title, author)
-        self.page_count = page_count
+        self.page_count = int(page_count)
 
     def __str__(self):
-        return f"{self.title} by {self.author} - {self.page_count} pages"
+        return "{} by {}, Page Count: {}".format(self.title, self.author, self.page_count)
 
 
 # Composition Class - Library
@@ -41,8 +41,16 @@ class Library:
     def list_books(self):
         if not self.books:
             print("No books in the library.")
-        else:
-            print("Books available in the library:")
-            for book in self.books:
-                print(book)
+            return
+
+        for book in self.books:
+            if isinstance(book, EBook):
+                print("EBook: {}".format(str(book)))
+            elif isinstance(book, PrintBook):
+                print("PrintBook: {}".format(str(book)))
+            elif isinstance(book, Book):
+                print("Book: {}".format(str(book)))
+            else:
+                # fallback for unexpected types
+                print(str(book))
 
