@@ -13,7 +13,7 @@ class Book:
 # Derived Class - EBook
 class EBook(Book):
     def __init__(self, title, author, file_size):
-        super(EBook, self).__init__(title, author)
+        super().__init__(title, author)
         self.file_size = file_size
 
     def __str__(self):
@@ -23,7 +23,7 @@ class EBook(Book):
 # Derived Class - PrintBook
 class PrintBook(Book):
     def __init__(self, title, author, page_count):
-        super(PrintBook, self).__init__(title, author)
+        super().__init__(title, author)
         self.page_count = page_count
 
     def __str__(self):
@@ -45,3 +45,4 @@ class Library:
             print("Books available in the library:")
             for book in self.books:
                 print(book)
+
